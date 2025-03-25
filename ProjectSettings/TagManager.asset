@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Road
   - Bike
+  - Tile
+  - Vehicle
+  - VehicleSpawner
   layers:
   - Default
   - TransparentFX
