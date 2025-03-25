@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 5694325110897044692}
   m_Layer: 0
   m_Name: Bike
-  m_TagString: Untagged
+  m_TagString: Bike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -639,4 +639,4 @@ MonoBehaviour:
   bikeBodyRb: {fileID: 7187804229898428881}
   surfaceMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0

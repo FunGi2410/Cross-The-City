@@ -7,7 +7,7 @@ public class Road : MonoBehaviour
 
     private void Awake()
     {
-        roadSpawner = GameObject.FindFirstObjectByType<RoadSpawner>();
+        roadSpawner = FindFirstObjectByType<RoadSpawner>();
         nextSpawnPoint = transform.GetChild(0).transform.position;
     }
 
@@ -16,6 +16,7 @@ public class Road : MonoBehaviour
         if (!other.CompareTag("Bike")) return;
         if(other.transform.position.z > nextSpawnPoint.z)
         {
+            Debug.Log("Road Spawn");
             roadSpawner.Spawn();
             Destroy(gameObject, 2);
         }
