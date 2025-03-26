@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 7415616855438130172}
   - component: {fileID: 7187804229898428881}
   - component: {fileID: 7270912408962754859}
+  - component: {fileID: 8092309283048141759}
   m_Layer: 6
   m_Name: Bike Body
   m_TagString: Untagged
@@ -187,6 +188,19 @@ FixedJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &8092309283048141759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956851002388316967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d1536638fe9d14696ea9e4bee0ed01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceToBreak: 17
 --- !u!1 &1813582228502618859
 GameObject:
   m_ObjectHideFlags: 0
