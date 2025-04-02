@@ -6,7 +6,7 @@ public class CoinMove : MonoBehaviour
 
     private void Update()
     {
-        this.MoveToPlayer();
+        MoveToPlayer();
     }
 
     void MoveToPlayer()

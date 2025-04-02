@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4657560251646240277}
   - component: {fileID: 1431441367570530116}
   - component: {fileID: 2445546695945544486}
+  - component: {fileID: 2415290069945178851}
   m_Layer: 0
   m_Name: Bus 1
   m_TagString: Vehicle
@@ -103,6 +104,21 @@ MonoBehaviour:
   speed: 10
   targetPoints: []
   distance: 50
+--- !u!114 &2415290069945178851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927675620267982836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28b165f370ff134fa40a156f985d115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 12
+  explosionEffect: {fileID: 7907298227055638610, guid: 5c8b646a5aabf0c40b5ec6e741b7ed8d, type: 3}
+  directionForce: {x: 0, y: 1, z: -0.2}
 --- !u!1 &1927675620267982838
 GameObject:
   m_ObjectHideFlags: 0

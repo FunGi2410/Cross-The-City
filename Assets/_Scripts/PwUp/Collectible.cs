@@ -6,7 +6,7 @@ public class Collectible : MonoBehaviour
 {
 	[SerializeField] private bool rotate;
 	[SerializeField] private float rotationSpeed;
-	[SerializeField] private uint amount;
+	[SerializeField] private int amount;
 
 	[SerializeField] private AudioClip collectSound;
 	[SerializeField] private GameObject collectEffect;
@@ -32,7 +32,7 @@ public class Collectible : MonoBehaviour
 		if (collectEffect)
 			Instantiate(collectEffect, transform.position, Quaternion.identity);
 
-		Bike.Instance.CollectCoin(this.amount);
+		Bike.Instance.CollectCoin(amount);
 
 		Destroy(gameObject);
 	}

@@ -6,8 +6,8 @@ public class Coin : MonoBehaviour
 
     private void Awake()
     {
-        this.coinMove = GetComponent<CoinMove>();
-        this.coinMove.enabled = false;
+        coinMove = GetComponent<CoinMove>();
+        coinMove.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -15,7 +15,7 @@ public class Coin : MonoBehaviour
         if (other.gameObject.CompareTag("MagnetDetect"))
         {
             //Debug.Log("Detect coin");
-            this.coinMove.enabled = true;
+            coinMove.enabled = true;
         }
     }
 }

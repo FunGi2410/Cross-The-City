@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 5160302945721971984}
   - component: {fileID: 5521851867190300437}
   - component: {fileID: 5271229680097023798}
+  - component: {fileID: 910320145632475505}
   m_Layer: 0
   m_Name: Taxi
   m_TagString: Vehicle
@@ -513,6 +514,21 @@ MonoBehaviour:
   speed: 10
   targetPoints: []
   distance: 50
+--- !u!114 &910320145632475505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581271277805468796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28b165f370ff134fa40a156f985d115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 12
+  explosionEffect: {fileID: 7907298227055638610, guid: 5c8b646a5aabf0c40b5ec6e741b7ed8d, type: 3}
+  directionForce: {x: 0, y: 1, z: -0.2}
 --- !u!1 &5581271277805468798
 GameObject:
   m_ObjectHideFlags: 0

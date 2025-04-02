@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 7187804229898428881}
   - component: {fileID: 7270912408962754859}
   - component: {fileID: 8092309283048141759}
+  - component: {fileID: 8411044692558113439}
   m_Layer: 6
   m_Name: Bike Body
   m_TagString: Untagged
@@ -201,6 +202,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceToBreak: 17
+--- !u!114 &8411044692558113439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956851002388316967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c28b165f370ff134fa40a156f985d115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 20
+  explosionEffect: {fileID: 7907298227055638610, guid: 5c8b646a5aabf0c40b5ec6e741b7ed8d, type: 3}
+  directionForce: {x: 0, y: -1, z: 1}
 --- !u!1 &1813582228502618859
 GameObject:
   m_ObjectHideFlags: 0

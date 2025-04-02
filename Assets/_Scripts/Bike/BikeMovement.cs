@@ -62,21 +62,13 @@ public class BikeMovement : MonoBehaviour
 
     void Acceleration()
     {
-        //sphereRb.linearVelocity = Vector3.Lerp(sphereRb.linearVelocity, transform.forward * this.maxSpeed * this.velocity, Time.fixedDeltaTime * this.acceleration);
         sphereRb.linearVelocity = Vector3.Lerp(sphereRb.linearVelocity, moveInput * this.maxSpeed * transform.forward, Time.fixedDeltaTime * this.acceleration);
-
-        //mRb.velocity = Vector3.Lerp(mRb.velocity, transform.forward * this.MaxSpeed * this.velocity, Time.fixedDeltaTime * this.acceleration);
-        //sphereRb.transform.Translate(sphereRb.transform.forward * this.maxSpeed * this.velocity * Time.fixedDeltaTime);
     }
 
     void Rotation()
     {
-        transform.Rotate(0, steerInput * curVelocityOffset * steerSpeed * Time.fixedDeltaTime, 0, Space.World);
-
-        //sphereRb.linearVelocity = Vector3.Lerp(sphereRb.linearVelocity, Vector3.right * this.steerSpeed * this.horizontalSpeed, Time.fixedDeltaTime * this.acceleration);
-        //mRb.velocity = Vector3.Lerp(mRb.velocity, Vector3.right * this.SteerSpeed * this.horizontalSpeed, Time.fixedDeltaTime * this.acceleration);
-
-        // Rotate Handle
+        //transform.Rotate(0, steerInput * curVelocityOffset * steerSpeed * Time.fixedDeltaTime, 0, Space.World);
+        sphereRb.linearVelocity = Vector3.Lerp(sphereRb.linearVelocity, Vector3.right * steerInput * this.horizontalSpeed, Time.fixedDeltaTime * this.acceleration);
     }
 
     bool Grounded()

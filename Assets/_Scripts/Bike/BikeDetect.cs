@@ -9,7 +9,7 @@ public class BikeDetect : MonoBehaviour
 
     private void Awake()
     {
-        this.bikeBodyRb = GetComponent<Rigidbody>();
+        bikeBodyRb = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,7 +24,7 @@ public class BikeDetect : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Tile"))
+        if (!collision.gameObject.CompareTag("Road"))
         {
             Rigidbody otherRb = collision.rigidbody;
 
@@ -44,14 +44,14 @@ public class BikeDetect : MonoBehaviour
             {
                 if (isBreak) return;
                 isBreak = true;
-                this.bikeBodyRb.freezeRotation = false;
+                bikeBodyRb.freezeRotation = false;
                 // apply force
-                this.bikeBodyRb.AddForce(impactForce.magnitude * this.dirForce, ForceMode.Impulse);
+                bikeBodyRb.AddForce(impactForce.magnitude * dirForce, ForceMode.Impulse);
 
                 // cant control bike
                 BikeMovement.canMove = false;
                 // display game over panel
-                //GameController.instance.GameOver();
+                GameController.instance.GameOver();
             }
         }
     }
