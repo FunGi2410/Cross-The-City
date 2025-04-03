@@ -13,6 +13,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI coinText;
 
+    [SerializeField] private GameObject menuUI;
+    [SerializeField] private GameObject runningUI;
+
     private void Awake()
     {
         instance = this;
@@ -33,5 +36,15 @@ public class UIManager : MonoBehaviour
         scoreText.text = distance + " m";
         coinText.text = coin.ToString();
         gameOverPanel.SetActive(state);
+    }
+
+    public void DisplayMenuUI(bool state)
+    {
+        menuUI.SetActive(state);
+    }
+
+    public void DisplayRunningUI(bool state)
+    {
+        runningUI.SetActive(state);
     }
 }

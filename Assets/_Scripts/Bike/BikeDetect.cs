@@ -51,7 +51,7 @@ public class BikeDetect : MonoBehaviour
                 // cant control bike
                 BikeMovement.canMove = false;
                 // display game over panel
-                GameController.instance.GameOver();
+                GameManager.instance.GameOver();
             }
         }
     }
