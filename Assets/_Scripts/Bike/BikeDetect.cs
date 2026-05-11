@@ -24,9 +24,11 @@ public class BikeDetect : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Road"))
+        if (isBreak) return;
+        if (!collision.gameObject.CompareTag("Road") && bikeBodyRb != null)
         {
             Rigidbody otherRb = collision.rigidbody;
+            if (otherRb == null) return;
 
             // calculate relative velocity between 2 objects
             Vector3 relativeVelocity = bikeBodyRb.linearVelocity - collision.relativeVelocity;
@@ -34,23 +36,15 @@ public class BikeDetect : MonoBehaviour
             // calculate mass
             float combinedMass = bikeBodyRb.mass * otherRb.mass / (bikeBodyRb.mass + otherRb.mass);
 
-            // calculate impactForce 
             Vector3 impactForce = relativeVelocity * combinedMass;
-
-            Debug.Log("Impact Force: " + impactForce.magnitude + " N");
 
             // magnitude of force more than forceToBreak when bike break
             if(impactForce.magnitude > forceToBreak)
             {
-                if (isBreak) return;
                 isBreak = true;
                 bikeBodyRb.freezeRotation = false;
-                // apply force
                 bikeBodyRb.AddForce(impactForce.magnitude * dirForce, ForceMode.Impulse);
-
-                // cant control bike
                 BikeMovement.canMove = false;
-                // display game over panel
                 GameManager.instance.GameOver();
             }
         }
