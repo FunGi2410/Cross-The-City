@@ -14,13 +14,14 @@ public class RoadSpawner : MonoBehaviour
     private void Start()
     {
         Spawn();
+        Spawn();
     }
 
     public void Spawn()
     {
         int index = Random.Range(0, roadPrefabs.Length);
         GameObject tile = Instantiate(roadPrefabs[index], nextSpawnPoint, Quaternion.identity, transform);
-        // Vehicle Spawn
+        
         vehicleSpawner.Spawn(nextSpawnPoint);
         nextSpawnPoint = tile.transform.GetChild(0).transform.position;
     }

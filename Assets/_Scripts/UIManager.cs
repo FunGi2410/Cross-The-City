@@ -6,7 +6,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    /*------------ PANEL ---------------------*/
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject gameOverPanel;
 
@@ -21,7 +20,6 @@ public class UIManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
 
-        /*---------- DeActive Panel ----------*/
         pausePanel.SetActive(false);
         gameOverPanel.SetActive(false);
     }

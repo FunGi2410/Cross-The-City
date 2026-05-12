@@ -16,7 +16,6 @@ public class Road : MonoBehaviour
         if (!other.CompareTag("Bike")) return;
         if(other.transform.position.z > nextSpawnPoint.z)
         {
-            Debug.Log("Road Spawn");
             roadSpawner.Spawn();
             Destroy(gameObject, 2);
         }
