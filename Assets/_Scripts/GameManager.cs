@@ -62,4 +62,9 @@ public class GameManager : MonoBehaviour
     {
         UIManager.instance.DisplayGameOverPanel(true, Bike.Instance.Distance, Bike.Instance.CoinNumber);
     }
+
+    public void JoinGamme()
+    {
+        print("Join Game");
+    }
 }
