@@ -35,7 +35,7 @@ public class BikeMovement : MonoBehaviour
     private void Update()
     {
         steerInput = Input.GetAxisRaw("Horizontal");
-        moveInput = Input.GetAxisRaw("Vertical");
+        // moveInput = Input.GetAxisRaw("Vertical");
 
         transform.position = sphereRb.transform.position;
 

@@ -7,11 +7,6 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private GameObject[] vehiclePrefabs;
     Vector3 nextSpawnPoint;
 
-    private void Start()
-    {
-        //this.Spawn();
-    }
-
     public void Spawn(Vector3 spawnPos)
     {
         int index = Random.Range(0, this.vehiclePrefabs.Length);

@@ -28,12 +28,10 @@ public class Bike : MonoBehaviour
 
     private void Update()
     {
-        // Calculate & Show distance
         distance = Mathf.RoundToInt(transform.position.z - startPosZ);
         if (distanceText)
             distanceText.text = Distance + " m";
 
-        // Show coin
         if (coinText)
             coinText.text = CoinNumber.ToString();
     }

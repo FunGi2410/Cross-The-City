@@ -1,15 +1,29 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class VehicleActivator : MonoBehaviour
 {
     public event Action OnPlayerDetected;
-    void Update()
+
+    [SerializeField] private float triggerDistance = 20f;
+
+    private bool isTriggered;
+
+    public void SetTriggerDistance(float value)
     {
-        if(Bike.Instance.transform.position.z >= transform.position.z)
+        triggerDistance = value;
+    }
+
+    private void Update()
+    {
+        if (isTriggered) return;
+        if (Bike.Instance == null) return;
+
+        float playerZ = Bike.Instance.transform.position.z;
+
+        if (playerZ >= transform.position.z - triggerDistance)
         {
+            isTriggered = true;
             OnPlayerDetected?.Invoke();
         }
     }

@@ -39,14 +39,14 @@ public class BikeDetect : MonoBehaviour
             Vector3 impactForce = relativeVelocity * combinedMass;
 
             // magnitude of force more than forceToBreak when bike break
-            if(impactForce.magnitude > forceToBreak)
-            {
-                isBreak = true;
-                bikeBodyRb.freezeRotation = false;
-                bikeBodyRb.AddForce(impactForce.magnitude * dirForce, ForceMode.Impulse);
-                BikeMovement.canMove = false;
-                GameManager.instance.GameOver();
-            }
+            // if(impactForce.magnitude > forceToBreak)
+            // {
+            //     isBreak = true;
+            //     bikeBodyRb.freezeRotation = false;
+            //     bikeBodyRb.AddForce(impactForce.magnitude * dirForce, ForceMode.Impulse);
+            //     BikeMovement.canMove = false;
+            //     GameManager.instance.GameOver();
+            // }
         }
     }
 }

@@ -1,77 +1,71 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VehicleMovement : MonoBehaviour
 {
-    [SerializeField] float speed;
-    [SerializeField] List<Vector3> targetPoints;
-    private int curPointIndex;
-    [SerializeField] private float distance;
-    private float disLimit = 1;
-    private Rigidbody mRb;
-    private Collider mCollider;
+    [SerializeField] private float speed = 6f;
+    [SerializeField] private bool canMoveImmediately;
+    [SerializeField] private float checkFrontDistance = 4f;
 
-    bool canMove;
-    VehicleActivator vehicleActivator;
+    private bool canMove;
+    private Collider mCollider;
+    private VehicleActivator activator;
 
     private void Awake()
     {
-        this.mCollider = GetComponent<Collider>();
-        this.mRb = GetComponent<Rigidbody>();
-        Vector3 target = new Vector3(transform.position.x, transform.position.y, transform.position.z + distance);
-        targetPoints.Add(target);
-        //this.tile = transform.parent.parent.GetComponent<Tile>();
+        mCollider = GetComponent<Collider>();
+        activator = GetComponent<VehicleActivator>();
 
-        this.vehicleActivator = transform.parent.GetComponent<VehicleActivator>();
-        this.vehicleActivator.OnPlayerDetected += ActiveMovement;
+        if (activator != null)
+            activator.OnPlayerDetected += ActiveMovement;
+
+        canMove = canMoveImmediately;
+    }
+
+    public void SetMovingType(bool isMoving)
+    {
+        canMoveImmediately = isMoving;
+        canMove = isMoving == false ? false : canMove;
     }
 
     private void Update()
     {
-        // Move
-        if(this.canMove)
-            Movement();
+        if (canMove)
+            Move();
 
-        if (transform.position.z < Bike.Instance.transform.position.z)
+        if (Bike.Instance != null && transform.position.z < Bike.Instance.transform.position.z - 5f)
         {
-            this.mCollider.enabled = false;
+            if (mCollider != null)
+                mCollider.enabled = false;
+
             Destroy(gameObject, 3f);
         }
     }
 
-    private void FixedUpdate()
+    private void ActiveMovement()
     {
-        Debug.DrawLine(transform.position, targetPoints[0], Color.red);
+        canMove = true;
     }
 
-    void ActiveMovement()
+    private void Move()
     {
-        this.canMove = true;
+        if (HasVehicleInFront()) return;
+
+        transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
     }
 
-    void Movement()
+    private bool HasVehicleInFront()
     {
-        //if (!this.tile.IsBikeArrive) return;
-        if (curPointIndex >= targetPoints.Count)
-            return;
-
-        transform.Translate(transform.forward * this.speed * Time.deltaTime);
-        /*transform.position = Vector3.MoveTowards(transform.position, targetPoints[curPointIndex], Time.deltaTime * this.speed);
-        this.mRb.velocity = Vector3.Lerp(this.mRb.velocity, transform.forward * this.speed, Time.fixedDeltaTime);*/
-        //this.mRb.MovePosition(this.mRb.position + (transform.forward * this.speed * Time.fixedDeltaTime));
-
-        if (Vector3.Distance(targetPoints[curPointIndex], transform.position) < disLimit)
+        if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, checkFrontDistance))
         {
-            curPointIndex++;
+            return hit.collider.CompareTag("Vehicle");
         }
+
+        return false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnDestroy()
     {
-        if (collision.gameObject.CompareTag("Vehicle"))
-        {
-            Physics.IgnoreCollision(collision.collider, this.mCollider);
-        }
+        if (activator != null)
+            activator.OnPlayerDetected -= ActiveMovement;
     }
 }
